@@ -66,12 +66,14 @@
         }
         function getMessages() {
           $.get("http://localhost:3010/messages", (data) => {
+            $.get("https://murmuring-forest-47581.herokuapp.com/", (data) => {
             console.log(data);
             data.forEach(addMessage);
           });
         }
         function postMessage(message) {
           $.post("http://localhost:3010/messages", message);
+          $.post("https://murmuring-forest-47581.herokuapp.com/", message);
         }
       </script>
     </div>
