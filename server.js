@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
 //mongodb+srv://Admin:<password>@chatapp.vrbrl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-var dbUrl = 'mongodb+srv://Admin:Sh268268@chatapp.vrbrl.mongodb.net/chatappdb?retryWrites=true&w=majority'
+var dbUrl = 'mongodb+srv://bruna:<galaxys9plus>@cluster0.gn4lw.mongodb.net/Chatapp?retryWrites=true&w=majority'
 
 var Message = mongoose.model('Message', {
     name : String, message: String
@@ -37,7 +37,7 @@ app.post('/messages', (req, res) => {
         res.sendStatus(500);
 
         console.log(req.body)
-        //messages.push(req.body);
+        messages.push(req.body);
         io.emit('message', req.body);
         res.sendStatus(200);
     })   
@@ -45,7 +45,7 @@ app.post('/messages', (req, res) => {
 
 mongoose.connect(dbUrl, (err) => {
     //if (err) return console.log(err);
-    console.log('Mongodb connection successfully by John')
+    console.log('Mongodb connection successfully by Bruna')
 })
 
 io.on("connection", (socket) => {
@@ -55,4 +55,5 @@ io.on("connection", (socket) => {
 var server = app.listen(port, () => {
     console.log('Server is listening on port', port)
 })
+
 
